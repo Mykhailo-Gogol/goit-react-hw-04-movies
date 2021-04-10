@@ -1,9 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
+import MovieList from "../components/MovieList";
+import { trending } from "../services/api";
 
-export default function MoviesView() {
-  return (
-    <div>
-      <h1>This is my awesome MoviesView.</h1>
-    </div>
-  );
+class MoviesView extends Component {
+  componentDidMount() {}
+
+  render() {
+    return (
+      <div>
+        <MovieList trending={trending} />
+      </div>
+    );
+  }
 }
+
+export default MoviesView;

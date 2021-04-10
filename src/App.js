@@ -17,23 +17,32 @@ import NotFoundView from "./views/NotFoundView.js";
 function App() {
   return (
     <>
-      <NavLink to="/" className="NavLink" activeClassName="NavLink--active">
-        Home
-      </NavLink>
-      <NavLink
-        to="/movies"
-        className="NavLink"
-        activeClassName="NavLink--active"
-      >
-        Movies
-      </NavLink>
-      <NavLink
-        to="/details"
-        className="NavLink"
-        activeClassName="NavLink--active"
-      >
-        Details
-      </NavLink>
+      <nav className="Nav">
+        <NavLink
+          exact
+          to="/"
+          className="NavLink"
+          activeClassName="NavLink--active"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          exact
+          to="/movies"
+          className="NavLink"
+          activeClassName="NavLink--active"
+        >
+          Movies
+        </NavLink>
+        <NavLink
+          exact
+          to="/details"
+          className="NavLink"
+          activeClassName="NavLink--active"
+        >
+          Details
+        </NavLink>
+      </nav>
 
       <Switch>
         <Route exact path="/" component={HomeView} />
