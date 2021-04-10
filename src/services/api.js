@@ -5,7 +5,17 @@ export const trending = () => {
   return axios
     .get(`https://api.themoviedb.org/3/trending/all/week?api_key=${ApiKey}`)
     .then(({ data }) => {
-      console.log(data.results);
+      return data;
+    })
+    .catch((err) => console.log(err));
+};
+
+export const movieById = (id) => {
+  return axios
+    .get(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=en-US`
+    )
+    .then(({ data }) => {
       return data;
     })
     .catch((err) => console.log(err));
