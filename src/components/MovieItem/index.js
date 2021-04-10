@@ -1,3 +1,12 @@
+import {
+  // BrowserRouter,
+  // Route,
+  NavLink,
+  // Switch,
+  // useRouteMatch,
+  // useParams,
+} from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -25,38 +34,44 @@ const useStyles = makeStyles({
   baseTitle: {
     fontSize: 20,
   },
+  baseLink: {
+    textDecoration: "none",
+    color: "inherit",
+  },
 });
 
-const MovieItem = ({ title, overview }) => {
+const MovieItem = ({ id, title, overview, url }) => {
   const classes = useStyles();
   return (
     <li className={classes.baseItem}>
       <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="/static/images/cards/contemplative-reptile.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h2"
-              className={classes.baseTitle}
-            >
-              {title ? title : "Unknow title"}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="p"
-              className={classes.baseParagraph}
-            >
-              {overview}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <NavLink exact to={`${url}/${id}`} className={classes.baseLink}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image="/static/images/cards/contemplative-reptile.jpg"
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                className={classes.baseTitle}
+              >
+                {title ? title : "Unknow title"}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+                className={classes.baseParagraph}
+              >
+                {overview}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </NavLink>
         <CardActions>
           <Button size="small" color="primary">
             Share

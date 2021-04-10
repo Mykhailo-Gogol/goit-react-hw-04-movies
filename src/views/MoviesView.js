@@ -8,7 +8,7 @@ class MoviesView extends Component {
   render() {
     return (
       <div>
-        <MovieList trending={trending} />
+        <MovieList trending={trending} url={this.props.match.url} />
       </div>
     );
   }

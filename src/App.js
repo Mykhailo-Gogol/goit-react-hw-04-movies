@@ -34,20 +34,13 @@ function App() {
         >
           Movies
         </NavLink>
-        <NavLink
-          exact
-          to="/details"
-          className="NavLink"
-          activeClassName="NavLink--active"
-        >
-          Details
-        </NavLink>
       </nav>
 
       <Switch>
         <Route exact path="/" component={HomeView} />
-        <Route exact path="/movies" component={MoviesView} />
-        <Route exact path="/details" component={MovieDetailsView} />
+        <Route path="/movies/:movieId" component={MovieDetailsView} />
+        <Route path="/movies" component={MoviesView} />
+
         <Route component={NotFoundView} />
       </Switch>
     </>

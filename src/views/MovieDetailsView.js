@@ -1,9 +1,5 @@
-import React from "react";
+const MovieDetailsView = ({ match }) => {
+  return <div>This is my movie {match.params.movieId}</div>;
+};
 
-export default function MovieDetailsView() {
-  return (
-    <div>
-      <h1>This is my awesome MovieDetailsView.</h1>
-    </div>
-  );
-}
+export default MovieDetailsView;

@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MovieList = ({ trending }) => {
+const MovieList = ({ trending, url }) => {
   const [films, setFilms] = useState([]);
   useEffect(() => {
     trending().then(({ results }) => setFilms(results));
@@ -26,7 +26,13 @@ const MovieList = ({ trending }) => {
       <h1 className={classes.baseHeading}>Movies</h1>
       <ul className={classes.baseList}>
         {films.map(({ id, title, overview }) => (
-          <MovieItem key={id} title={title} overview={overview} />
+          <MovieItem
+            key={id}
+            id={id}
+            title={title}
+            overview={overview}
+            url={url}
+          />
         ))}
       </ul>
     </>
