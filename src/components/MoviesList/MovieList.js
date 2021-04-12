@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import MovieItem from "../MovieItem";
+import MovieItem from "../MoviesItem";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -15,6 +15,7 @@ const useStyles = makeStyles({
 
 const MovieList = ({ trending, url }) => {
   const [films, setFilms] = useState([]);
+
   useEffect(() => {
     trending().then(({ results }) => setFilms(results));
   }, [trending]);
@@ -23,17 +24,21 @@ const MovieList = ({ trending, url }) => {
 
   return (
     <>
-      <h1 className={classes.baseHeading}>Movies</h1>
+      <h1 className={classes.baseHeading}>Trending Movies</h1>
       <ul className={classes.baseList}>
-        {films.map(({ id, title, overview }) => (
-          <MovieItem
-            key={id}
-            id={id}
-            title={title}
-            overview={overview}
-            url={url}
-          />
-        ))}
+        {films &&
+          films.map(
+            ({ id, title, overview }) =>
+              title && (
+                <MovieItem
+                  key={id}
+                  id={id}
+                  title={title}
+                  overview={overview}
+                  url={url}
+                />
+              )
+          )}
       </ul>
     </>
   );

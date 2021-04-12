@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MovieList from "../components/MovieList";
+import MovieList from "../components/MoviesList";
 import { trending } from "../services/api";
 
 class MoviesView extends Component {
