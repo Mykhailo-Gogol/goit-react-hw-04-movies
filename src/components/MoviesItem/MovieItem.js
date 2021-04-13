@@ -40,18 +40,14 @@ const useStyles = makeStyles({
   },
 });
 
-const MovieItem = ({ id, title, overview, url }) => {
+const MovieItem = ({ id, original_title, overview, url }) => {
   const classes = useStyles();
   return (
     <li className={classes.baseItem}>
       <Card className={classes.root}>
-        <NavLink exact to={`${url}/${id}`} className={classes.baseLink}>
+        <NavLink exact to={`${url}movies/${id}`} className={classes.baseLink}>
           <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image="/static/images/cards/contemplative-reptile.jpg"
-              title="Contemplative Reptile"
-            />
+            <CardMedia className={classes.media} />
             <CardContent>
               <Typography
                 gutterBottom
@@ -59,7 +55,7 @@ const MovieItem = ({ id, title, overview, url }) => {
                 component="h2"
                 className={classes.baseTitle}
               >
-                {title ? title : "Unknow title"}
+                {original_title ? original_title : "Unknow title"}
               </Typography>
               <Typography
                 variant="body2"

@@ -1,16 +1,10 @@
 import React, { Component } from "react";
-import MovieList from "../components/MoviesList";
-import { trending } from "../services/api";
 
 class MoviesView extends Component {
   componentDidMount() {}
 
   render() {
-    return (
-      <div>
-        <MovieList trending={trending} url={this.props.match.url} />
-      </div>
-    );
+    return <div></div>;
   }
 }
 
