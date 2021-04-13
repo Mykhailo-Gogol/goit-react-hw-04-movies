@@ -15,6 +15,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+const posterWidth = { mobile: "w342", tablet: "w500", desktop: "w780" };
 
 const useStyles = makeStyles({
   root: {
@@ -40,14 +41,22 @@ const useStyles = makeStyles({
   },
 });
 
-const MovieItem = ({ id, original_title, overview, url }) => {
+const MovieItem = ({ id, original_title, overview, url, poster_path }) => {
   const classes = useStyles();
+
   return (
     <li className={classes.baseItem}>
       <Card className={classes.root}>
         <NavLink exact to={`${url}movies/${id}`} className={classes.baseLink}>
           <CardActionArea>
-            <CardMedia className={classes.media} />
+            <CardMedia
+              className={classes.media}
+              component="img"
+              alt={original_title}
+              height="140"
+              image={`https://themoviedb.org/t/p/${posterWidth.mobile}${poster_path}`}
+              title={original_title}
+            />
             <CardContent>
               <Typography
                 gutterBottom
