@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MovieList = ({ trending, url }) => {
+const MovieList = ({ trending, url, location }) => {
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
@@ -37,6 +37,7 @@ const MovieList = ({ trending, url }) => {
                   overview={overview}
                   url={url}
                   poster_path={poster_path}
+                  location={location}
                 />
               )
           )}

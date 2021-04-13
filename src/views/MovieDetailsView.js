@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { movieDetailsById } from "../services/api.js";
 
+import Routes from "../routes/routes";
+
 const posterWidth = { mobile: "w342", tablet: "w500", desktop: "w780" };
 
-const MovieDetailsView = ({ match }) => {
+const MovieDetailsView = ({ match, history, location }) => {
   const { movieId } = match.params;
   const [currentMovieDetails, setCurrentMovieDetails] = useState({});
   const [posterPath, setPosterPath] = useState("");
@@ -25,30 +27,45 @@ const MovieDetailsView = ({ match }) => {
 
   const shouldDetailesRender =
     original_title && release_date && vote_average && overview && genres;
+
+  const handleGoBack = () => {
+    history.push(location?.state?.from || Routes.home);
+  };
+
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ marginRight: "30px" }}>
-        <img
-          src={`https://themoviedb.org/t/p/${posterWidth.mobile}${posterPath}`}
-          alt={original_title}
-        />
-      </div>
-      {shouldDetailesRender && (
-        <div className="details_container">
-          <h1>{original_title}</h1>
-          <p>Release date: {release_date.slice(0, 4)}</p>
-          <p>User Score {`${vote_average * 10} %`}</p>
-          <h2>Overview</h2>
-          <p style={{ width: "500px" }}>{overview}</p>
-          <h2>Genres</h2>
-          <ul>
-            {genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
+    <>
+      <button
+        type="button"
+        style={{ marginBottom: "30px" }}
+        onClick={handleGoBack}
+      >
+        Home
+      </button>
+
+      <div style={{ display: "flex" }}>
+        <div style={{ marginRight: "30px" }}>
+          <img
+            src={`https://themoviedb.org/t/p/${posterWidth.mobile}${posterPath}`}
+            alt={original_title}
+          />
         </div>
-      )}
-    </div>
+        {shouldDetailesRender && (
+          <div className="details_container">
+            <h1>{original_title}</h1>
+            <p>Release date: {release_date.slice(0, 4)}</p>
+            <p>User Score {`${vote_average * 10} %`}</p>
+            <h2>Overview</h2>
+            <p style={{ width: "500px" }}>{overview}</p>
+            <h2>Genres</h2>
+            <ul>
+              {genres.map((genre) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

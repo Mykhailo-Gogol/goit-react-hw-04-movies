@@ -6,6 +6,7 @@ import {
   // useRouteMatch,
   // useParams,
 } from "react-router-dom";
+import Routes from "../../routes/routes";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -15,6 +16,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+
 const posterWidth = { mobile: "w342", tablet: "w500", desktop: "w780" };
 
 const useStyles = makeStyles({
@@ -41,13 +43,29 @@ const useStyles = makeStyles({
   },
 });
 
-const MovieItem = ({ id, original_title, overview, url, poster_path }) => {
+const MovieItem = ({
+  id,
+  original_title,
+  overview,
+  url,
+  poster_path,
+  location,
+}) => {
   const classes = useStyles();
 
   return (
     <li className={classes.baseItem}>
       <Card className={classes.root}>
-        <NavLink exact to={`${url}movies/${id}`} className={classes.baseLink}>
+        <NavLink
+          exact
+          to={{
+            pathname: `${url}movies/${id}`,
+            state: {
+              from: location,
+            },
+          }}
+          className={classes.baseLink}
+        >
           <CardActionArea>
             <CardMedia
               className={classes.media}
@@ -78,12 +96,20 @@ const MovieItem = ({ id, original_title, overview, url, poster_path }) => {
           </CardActionArea>
         </NavLink>
         <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
+          <NavLink
+            exact
+            to={{
+              pathname: `${url}movies/${id}`,
+              state: {
+                from: location,
+              },
+            }}
+            className={classes.baseLink}
+          >
+            <Button size="small" color="primary">
+              Learn More
+            </Button>
+          </NavLink>
         </CardActions>
       </Card>
     </li>

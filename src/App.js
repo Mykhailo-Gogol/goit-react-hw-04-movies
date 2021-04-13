@@ -1,4 +1,5 @@
 import "./App.css";
+import Routes from "./routes/routes";
 
 import {
   // BrowserRouter,
@@ -20,7 +21,7 @@ function App() {
       <nav className="Nav">
         <NavLink
           exact
-          to="/"
+          to={Routes.home}
           className="NavLink"
           activeClassName="NavLink--active"
         >
@@ -28,7 +29,7 @@ function App() {
         </NavLink>
         <NavLink
           exact
-          to="/movies"
+          to={Routes.moviebyQuery}
           className="NavLink"
           activeClassName="NavLink--active"
         >
@@ -37,9 +38,9 @@ function App() {
       </nav>
 
       <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route path="/movies/:movieId" component={MovieDetailsView} />
-        <Route path="/movies" component={MoviesView} />
+        <Route exact path={Routes.home} component={HomeView} />
+        <Route path={Routes.movieDetails} component={MovieDetailsView} />
+        <Route path={Routes.moviebyQuery} component={MoviesView} />
 
         <Route component={NotFoundView} />
       </Switch>
