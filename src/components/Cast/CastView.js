@@ -1,5 +1,7 @@
-import React from "react";
+import "./CastView.scss";
 
-export default function CastView() {
+const CastView = () => {
   return <div></div>;
-}
+};
+
+export default CastView;

@@ -1,11 +1,7 @@
-import React, { Component } from "react";
+import "./MoviesView.scss";
 
-class MoviesView extends Component {
-  componentDidMount() {}
-
-  render() {
-    return <div></div>;
-  }
-}
+const MoviesView = () => {
+  return <div></div>;
+};
 
 export default MoviesView;

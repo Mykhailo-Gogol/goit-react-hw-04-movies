@@ -3,9 +3,7 @@ const ApiKey = "44fd846a8fbd886b31f763260ef2b77b";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
-// const BASE_URL = "https://api.themoviedb.org/3";
-
-export const trending = () => {
+export const Trending = () => {
   return axios
     .get(`/trending/all/week?api_key=${ApiKey}`)
     .then(({ data }) => {
@@ -14,7 +12,7 @@ export const trending = () => {
     .catch((err) => console.log(err));
 };
 
-export const movieDetailsById = (id) => {
+export const MovieDetailsById = (id) => {
   return axios
     .get(`/movie/${id}?api_key=${ApiKey}&language=en-US`)
     .then(({ data }) => {

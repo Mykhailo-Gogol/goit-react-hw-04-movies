@@ -1,6 +1,6 @@
 const Routes = {
   home: "/",
-  moviebyQuery: "/movies",
+  movieByQuery: "/movies",
   movieDetails: "/movies/:movieId",
 };
 

@@ -1,9 +1,9 @@
+import "./MovieDetailsView.scss";
 import { useState, useEffect } from "react";
 
 import Routes from "../../routes/routes";
-import { movieDetailsById } from "../../services/api.js";
-
-const posterWidth = { mobile: "w342", tablet: "w500", desktop: "w780" };
+import PosterWidth from "../../utils/PosterWidth";
+import { MovieDetailsById } from "../../services/api.js";
 
 const MovieDetailsView = ({ match, history, location }) => {
   const { movieId } = match.params;
@@ -11,7 +11,7 @@ const MovieDetailsView = ({ match, history, location }) => {
   const [posterPath, setPosterPath] = useState("");
 
   useEffect(() => {
-    movieDetailsById(movieId).then((res) => {
+    MovieDetailsById(movieId).then((res) => {
       setCurrentMovieDetails(res);
       setPosterPath(res.poster_path);
     });
@@ -33,19 +33,15 @@ const MovieDetailsView = ({ match, history, location }) => {
   };
 
   return (
-    <>
-      <button
-        type="button"
-        style={{ marginBottom: "30px" }}
-        onClick={handleGoBack}
-      >
+    <div className="MovieDetailsView">
+      <button type="button" className="GoBackButton" onClick={handleGoBack}>
         Home
       </button>
 
       <div style={{ display: "flex" }}>
         <div style={{ marginRight: "30px" }}>
           <img
-            src={`https://themoviedb.org/t/p/${posterWidth.mobile}${posterPath}`}
+            src={`https://themoviedb.org/t/p/${PosterWidth.mobile}${posterPath}`}
             alt={original_title}
           />
         </div>
@@ -65,7 +61,7 @@ const MovieDetailsView = ({ match, history, location }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
 import "./MovieList.scss";
-
+import { useState, useEffect } from "react";
 import MovieItem from "../MoviesItem";
 
 const MovieList = ({ trending, url, location }) => {
