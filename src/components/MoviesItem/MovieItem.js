@@ -6,9 +6,8 @@ import {
   // useRouteMatch,
   // useParams,
 } from "react-router-dom";
-import Routes from "../../routes/routes";
+import "./MovieItem.scss";
 
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -19,30 +18,6 @@ import Typography from "@material-ui/core/Typography";
 
 const posterWidth = { mobile: "w342", tablet: "w500", desktop: "w780" };
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-  baseItem: {
-    listStyle: "none",
-    margin: 30,
-  },
-  baseParagraph: {
-    overflow: "hidden",
-    height: 100,
-  },
-  baseTitle: {
-    fontSize: 20,
-  },
-  baseLink: {
-    textDecoration: "none",
-    color: "inherit",
-  },
-});
-
 const MovieItem = ({
   id,
   original_title,
@@ -51,11 +26,9 @@ const MovieItem = ({
   poster_path,
   location,
 }) => {
-  const classes = useStyles();
-
   return (
-    <li className={classes.baseItem}>
-      <Card className={classes.root}>
+    <li className="baseItem">
+      <Card className="root">
         <NavLink
           exact
           to={{
@@ -64,11 +37,11 @@ const MovieItem = ({
               from: location,
             },
           }}
-          className={classes.baseLink}
+          className="baseLink"
         >
           <CardActionArea>
             <CardMedia
-              className={classes.media}
+              className="media"
               component="img"
               alt={original_title}
               height="140"
@@ -80,7 +53,7 @@ const MovieItem = ({
                 gutterBottom
                 variant="h5"
                 component="h2"
-                className={classes.baseTitle}
+                className="baseTitle"
               >
                 {original_title ? original_title : "Unknow title"}
               </Typography>
@@ -88,7 +61,7 @@ const MovieItem = ({
                 variant="body2"
                 color="textSecondary"
                 component="p"
-                className={classes.baseParagraph}
+                className="baseParagraph"
               >
                 {overview}
               </Typography>
@@ -104,7 +77,7 @@ const MovieItem = ({
                 from: location,
               },
             }}
-            className={classes.baseLink}
+            className="baseLink"
           >
             <Button size="small" color="primary">
               Learn More

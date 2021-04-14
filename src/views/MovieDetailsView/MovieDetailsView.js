@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { movieDetailsById } from "../services/api.js";
 
-import Routes from "../routes/routes";
+import Routes from "../../routes/routes";
+import { movieDetailsById } from "../../services/api.js";
 
 const posterWidth = { mobile: "w342", tablet: "w500", desktop: "w780" };
 

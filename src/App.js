@@ -10,10 +10,10 @@ import {
   // useParams,
 } from "react-router-dom";
 
-import HomeView from "./views/HomeView";
-import MoviesView from "./views/MoviesView.js";
-import MovieDetailsView from "./views/MovieDetailsView.js";
-import NotFoundView from "./views/NotFoundView.js";
+import HomeView from "./views/HomeView/HomeView";
+import MoviesView from "./views/MoviesView/MoviesView";
+import MovieDetailsView from "./views/MovieDetailsView/MovieDetailsView";
+import NotFoundView from "./views/NotFoundView/NotFoundView";
 
 function App() {
   return (
