@@ -20,3 +20,13 @@ export const MovieDetailsById = (id) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const MovieCredits = (id) => {
+  return axios
+    .get(`/movie/${id}/credits?api_key=${ApiKey}&language=en-US`)
+    .then((res) => {
+      console.log(res);
+      return res;
+    })
+    .catch((err) => console.log(err));
+};

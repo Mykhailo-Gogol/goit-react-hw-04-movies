@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,MAAM,CAAC;EACL,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,IAAI;CACb;;AACD,AAAA,MAAM,CAAC;EACL,OAAO,EAAE,KAAK;EACd,KAAK,EAAE,KAAK;EACZ,WAAW,EAAE,IAAI;EACjB,YAAY,EAAE,IAAI;CACnB",
-    "sources": [
-        "NotFoundView.scss"
-    ],
-    "names": [],
-    "file": "NotFoundView.css"
-}

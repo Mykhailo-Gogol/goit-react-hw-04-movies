@@ -1,8 +1,11 @@
+.MovieDetailsView {
+  padding: 30px;
+}
+
 .GoBackButton {
   display: block;
   padding: 20px;
-  margin: 30px;
-  margin-left: auto;
+  margin: 30px 0 30px auto;
   background-color: black;
   color: white;
   width: 200px;
@@ -16,4 +19,23 @@
   background-color: white;
   color: black;
   border: 1px solid black;
+}
+
+.AdditionalInfoNav {
+  padding: 30px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  background-color: lightblue;
+}
+
+.Additional-NavLink {
+  display: block;
+  color: black;
+  padding: 10px 30px;
+  text-decoration: none;
+}
+
+.Additional-NavLink--active {
+  color: white;
+  text-decoration: underline;
 }
