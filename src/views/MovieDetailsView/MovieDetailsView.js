@@ -18,7 +18,10 @@ const MovieDetailsView = ({ match, history, location }) => {
       setCurrentMovieDetails(res);
       setPosterPath(res.poster_path);
     });
-    MovieCredits(movieId).then((res) => console.log(res));
+  }, [movieId]);
+
+  useEffect(() => {
+    console.log(typeof movieId);
   }, [movieId]);
 
   const {
@@ -84,11 +87,11 @@ const MovieDetailsView = ({ match, history, location }) => {
       <div className="AdditionalInfo">
         <Route
           path={`${match.url}${Routes.cast}`}
-          render={() => <CastView />}
+          render={() => <CastView id={movieId} />}
         />
         <Route
           path={`${match.url}${Routes.reviews}`}
-          render={() => <ReviewsView />}
+          render={() => <ReviewsView id={movieId} />}
         />
       </div>
     </div>

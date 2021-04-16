@@ -4,14 +4,25 @@ import { useState, useEffect } from "react";
 import { MovieCredits } from "../../services/api";
 
 const CastView = ({ id }) => {
-  const [cast, setCast] = useState({});
+  const [cast, setCast] = useState([]);
+
   useEffect(() => {
+    MovieCredits(id).then((data) => {
+      setCast(data.cast);
+    });
     console.log(id);
-    MovieCredits(id).then((res) => setCast(res));
-  }, [id]);
+  }, []);
   return (
     <div>
-      <h1> Cast View</h1>
+      {cast && (
+        <ul>
+          {cast.map(({ name }) => (
+            <li>
+              <p>{name}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
