@@ -29,3 +29,12 @@ export const MovieCredits = (id) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const MovieReviews = (id) => {
+  return axios
+    .get(`/movie/${id}/reviews?api_key=${ApiKey}&language=en-US&page=1`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
+};

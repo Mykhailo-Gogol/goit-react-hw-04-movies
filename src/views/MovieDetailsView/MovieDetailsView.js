@@ -4,7 +4,7 @@ import { Route, NavLink } from "react-router-dom";
 
 import Routes from "../../routes/routes";
 import PosterWidth from "../../utils/PosterWidth";
-import { MovieDetailsById, MovieCredits } from "../../services/api.js";
+import { MovieDetailsById } from "../../services/api.js";
 import CastView from "../../components/CastView";
 import ReviewsView from "../../components/ReviewsView";
 
