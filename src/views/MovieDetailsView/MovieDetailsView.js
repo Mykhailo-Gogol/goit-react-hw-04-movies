@@ -1,18 +1,13 @@
 import "./MovieDetailsView.scss";
 import defaultImage from "../../images/default-image.jpeg";
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useState, useEffect } from "react";
 import { Route, NavLink } from "react-router-dom";
 
 import Routes from "../../routes/routes";
 import PosterWidth from "../../utils/PosterWidth";
 import { MovieDetailsById } from "../../services/api.js";
-
-const CastView = lazy(() =>
-  import("../../components/CastView/" /* webpackChunkName: "cast-page" */)
-);
-const ReviewsView = lazy(() =>
-  import("../../components/ReviewsView/" /* webpackChunkName: "revies-page" */)
-);
+import CastView from "../../components/CastView/CastView";
+import ReviewsView from "../../components/ReviewsView/Review";
 
 const MovieDetailsView = ({ match, history, location }) => {
   const { movieId } = match.params;
@@ -40,7 +35,7 @@ const MovieDetailsView = ({ match, history, location }) => {
     original_title && release_date && vote_average && overview && genres;
 
   const handleGoBack = () => {
-    history.push(location?.state?.from || Routes.home);
+    history.push(location?.state?.from || Routes.home, location?.state?.query);
   };
 
   return (
@@ -93,16 +88,14 @@ const MovieDetailsView = ({ match, history, location }) => {
         </NavLink>
       </div>
       <div className="AdditionalInfo">
-        <Suspense fallback={<h1>Load...</h1>}>
-          <Route
-            path={`${match.url}${Routes.cast}`}
-            render={() => <CastView id={movieId} />}
-          />
-          <Route
-            path={`${match.url}${Routes.reviews}`}
-            render={() => <ReviewsView id={movieId} />}
-          />
-        </Suspense>
+        <Route
+          path={`${match.path}${Routes.cast}`}
+          render={() => <CastView id={movieId} />}
+        />
+        <Route
+          path={`${match.path}${Routes.reviews}`}
+          render={() => <ReviewsView id={movieId} />}
+        />
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import "./MoviesView.scss";
-import { withRouter } from "react-router-dom";
+import { useLocation, withRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MovieByQuery } from "../../services/api";
 import MovieItem from "../../components/MoviesItem/";
 
-const MoviesView = ({ match, history, location }) => {
-  const [search, setsearch] = useState("");
+const MoviesView = ({ match }) => {
+  const { pathname, state } = useLocation();
+  console.log(pathname, state);
+  const [search, setsearch] = useState(state || "");
   const [query, setQuery] = useState("");
-  // const [page, setPage] = useState(1);
   const [films, setFilms] = useState([]);
 
   const handleQueryChange = ({ target }) => {
@@ -50,7 +51,8 @@ const MoviesView = ({ match, history, location }) => {
                   poster_path={poster_path}
                   overview={overview}
                   url={match.url}
-                  location={location}
+                  pathname={pathname}
+                  query={query}
                 />
               );
             })}

@@ -2,7 +2,7 @@ import "./MovieList.scss";
 import { useState, useEffect } from "react";
 import MovieItem from "../MoviesItem";
 
-const MovieList = ({ trending, url, location }) => {
+const MovieList = ({ trending, url, pathname }) => {
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const MovieList = ({ trending, url, location }) => {
       <ul className="baseList">
         {films &&
           films.map(
-            ({ id, original_title, overview, poster_path, location }) =>
+            ({ id, original_title, overview, poster_path }) =>
               original_title && (
                 <MovieItem
                   key={id}
@@ -24,7 +24,7 @@ const MovieList = ({ trending, url, location }) => {
                   overview={overview}
                   url={url}
                   poster_path={poster_path}
-                  location={location}
+                  pathname={pathname}
                 />
               )
           )}

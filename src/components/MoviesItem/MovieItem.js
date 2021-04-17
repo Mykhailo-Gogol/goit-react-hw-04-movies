@@ -18,6 +18,8 @@ const MovieItem = ({
   url,
   poster_path,
   location,
+  query,
+  pathname,
 }) => {
   return (
     <li className="baseItem">
@@ -26,8 +28,10 @@ const MovieItem = ({
           to={{
             pathname: `/movies/${id}`,
             state: {
-              from: location,
+              from: pathname,
+              query,
             },
+            search: `search=${query}`,
           }}
           className="baseLink"
         >
@@ -70,7 +74,7 @@ const MovieItem = ({
             to={{
               pathname: `${url}/${id}`,
               state: {
-                from: location,
+                from: pathname,
               },
             }}
             className="baseLink"
