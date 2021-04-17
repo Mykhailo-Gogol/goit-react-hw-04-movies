@@ -15,7 +15,7 @@ import { MovieDetailsById } from "../../services/api.js";
 // Utils
 import routes from "../../routes/routes";
 import poster_width from "../../utils/poster_width";
-import defaultImage from "../../images/default-image.jpeg";
+import placeholder_image from "../../images/default_image.jpeg";
 
 // Comp
 import CastView from "../../components/CastView/CastView";
@@ -49,12 +49,15 @@ const MovieDetailsPage = () => {
     original_title && release_date && vote_average && overview && genres;
 
   const handleGoBack = () => {
-    push(state?.from || routes.home);
+    push({
+      pathname: state?.from || routes.home,
+      state: state,
+    });
   };
 
   return (
-    <div className="movieDetailsPage">
-      <button type="button" className="goBackButton" onClick={handleGoBack}>
+    <div className="movie_details_page">
+      <button type="button" className="go_back_button" onClick={handleGoBack}>
         Back
       </button>
       <div style={{ display: "flex" }}>
@@ -63,7 +66,7 @@ const MovieDetailsPage = () => {
             src={
               posterPath
                 ? `https://themoviedb.org/t/p/${poster_width.mobile}${posterPath}`
-                : defaultImage
+                : placeholder_image
             }
             alt={original_title}
           />
@@ -84,19 +87,19 @@ const MovieDetailsPage = () => {
           </div>
         )}
       </div>
-      <div className="additionalInfoNav">
+      <div className="additional_info_nav">
         <h2>Additional information</h2>
         <NavLink
           to={`${url}${routes.cast}`}
-          className="additional-NavLink"
-          activeClassName="additional-NavLink--active"
+          className="additional_nav_link"
+          activeClassName="additional_nav_link--active"
         >
           Cast
         </NavLink>
         <NavLink
           to={`${url}${routes.reviews}`}
-          className="additional-NavLink"
-          activeClassName="additional-NavLink--active"
+          className="additional_nav_link"
+          activeClassName="additional_nav_link--active"
         >
           Reviews
         </NavLink>

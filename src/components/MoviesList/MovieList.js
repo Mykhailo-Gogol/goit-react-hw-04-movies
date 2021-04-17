@@ -16,8 +16,8 @@ const MovieList = () => {
 
   return (
     <>
-      <h1 className="moviesListHeading">Trending Movies</h1>
-      <ul className="moviesList">
+      <h1 className="movies_list_heading">Trending Movies</h1>
+      <ul className="movies_list">
         {films &&
           films.map(
             ({ id, original_title, overview, poster_path }) =>

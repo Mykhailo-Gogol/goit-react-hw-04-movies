@@ -9,8 +9,8 @@ import { MovieByQuery } from "../../services/api";
 import MovieItem from "../../components/MoviesItem";
 
 const MoviesPage = () => {
-  const { pathname } = useLocation();
-  const [search, setsearch] = useState("");
+  const { pathname, state } = useLocation();
+  const [search, setsearch] = useState(state?.query || "");
   const [query, setQuery] = useState("");
   const [films, setFilms] = useState([]);
 
@@ -41,7 +41,7 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="moviesForm">
+      <form onSubmit={handleSubmit} className="movies_form">
         <button type="submit">Search</button>
         <input
           value={search}
@@ -50,7 +50,7 @@ const MoviesPage = () => {
           onChange={handleQueryChange}
         />
       </form>
-      <ul className="moviesList">
+      <ul className="movies_list">
         {films &&
           films.map(({ id, original_title, poster_path, overview }) => {
             return (

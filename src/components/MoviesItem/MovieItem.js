@@ -12,14 +12,14 @@ import Typography from "@material-ui/core/Typography";
 
 // Utils
 import poster_width from "../../utils/poster_width";
-import defaultImage from "../../images/default-image.jpeg";
+import defaultImage from "../../images/default_image.jpeg";
 
 const MovieItem = ({ original_title, overview, poster_path, query, id }) => {
   const { pathname } = useLocation();
 
   return (
-    <li className="movieItem">
-      <Card className="movieRoot">
+    <li className="movie_item">
+      <Card className="movie_root">
         <NavLink
           to={{
             pathname: `/movies/${id}`,
@@ -29,11 +29,11 @@ const MovieItem = ({ original_title, overview, poster_path, query, id }) => {
             },
             search: `search=${query}`,
           }}
-          className="movieLink"
+          className="movie_link"
         >
           <CardActionArea>
             <CardMedia
-              className="movieMedia"
+              className="movie_media"
               component="img"
               alt={original_title}
               height="140"
@@ -49,7 +49,7 @@ const MovieItem = ({ original_title, overview, poster_path, query, id }) => {
                 gutterBottom
                 variant="h5"
                 component="h2"
-                className="movieTitle"
+                className="movie_title"
               >
                 {original_title ? original_title : "Unknow title"}
               </Typography>
@@ -57,7 +57,7 @@ const MovieItem = ({ original_title, overview, poster_path, query, id }) => {
                 variant="body2"
                 color="textSecondary"
                 component="p"
-                className="movieParagraph"
+                className="movie_paragraph"
               >
                 {overview}
               </Typography>

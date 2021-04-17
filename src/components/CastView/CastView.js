@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { MovieCredits } from "../../services/api";
 
 // Utils
-import defaultImage from "../../images/default-image.jpeg";
+import defaultImage from "../../images/default_image.jpeg";
 import poster_width from "../../utils/poster_width";
 
 const CastView = () => {
@@ -34,7 +34,7 @@ const CastView = () => {
                     : defaultImage
                 }
                 alt={name}
-                className="castImage"
+                className="cast_image"
               />
               <p>Name: {name}</p>
             </li>

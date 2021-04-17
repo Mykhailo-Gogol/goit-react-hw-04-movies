@@ -1,5 +1,11 @@
-.moviesForm {
+.movies_form {
   display: flex;
   justify-content: center;
   padding: 10px 0;
+}
+
+.movies_list {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
