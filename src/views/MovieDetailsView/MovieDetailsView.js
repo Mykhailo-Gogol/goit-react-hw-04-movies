@@ -1,12 +1,18 @@
 import "./MovieDetailsView.scss";
-import { useState, useEffect } from "react";
+import defaultImage from "../../images/default-image.jpeg";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { Route, NavLink } from "react-router-dom";
 
 import Routes from "../../routes/routes";
 import PosterWidth from "../../utils/PosterWidth";
 import { MovieDetailsById } from "../../services/api.js";
-import CastView from "../../components/CastView";
-import ReviewsView from "../../components/ReviewsView";
+
+const CastView = lazy(() =>
+  import("../../components/CastView/" /* webpackChunkName: "cast-page" */)
+);
+const ReviewsView = lazy(() =>
+  import("../../components/ReviewsView/" /* webpackChunkName: "revies-page" */)
+);
 
 const MovieDetailsView = ({ match, history, location }) => {
   const { movieId } = match.params;
@@ -40,12 +46,16 @@ const MovieDetailsView = ({ match, history, location }) => {
   return (
     <div className="MovieDetailsView">
       <button type="button" className="GoBackButton" onClick={handleGoBack}>
-        Home
+        Back
       </button>
       <div style={{ display: "flex" }}>
         <div style={{ marginRight: "30px" }}>
           <img
-            src={`https://themoviedb.org/t/p/${PosterWidth.mobile}${posterPath}`}
+            src={
+              posterPath
+                ? `https://themoviedb.org/t/p/${PosterWidth.mobile}${posterPath}`
+                : defaultImage
+            }
             alt={original_title}
           />
         </div>
@@ -83,14 +93,16 @@ const MovieDetailsView = ({ match, history, location }) => {
         </NavLink>
       </div>
       <div className="AdditionalInfo">
-        <Route
-          path={`${match.url}${Routes.cast}`}
-          render={() => <CastView id={movieId} />}
-        />
-        <Route
-          path={`${match.url}${Routes.reviews}`}
-          render={() => <ReviewsView id={movieId} />}
-        />
+        <Suspense fallback={<h1>Load...</h1>}>
+          <Route
+            path={`${match.url}${Routes.cast}`}
+            render={() => <CastView id={movieId} />}
+          />
+          <Route
+            path={`${match.url}${Routes.reviews}`}
+            render={() => <ReviewsView id={movieId} />}
+          />
+        </Suspense>
       </div>
     </div>
   );

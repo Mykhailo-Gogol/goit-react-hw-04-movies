@@ -1,6 +1,7 @@
 import "./MovieItem.scss";
 import { NavLink } from "react-router-dom";
 import PosterWidth from "../../utils/PosterWidth";
+import defaultImage from "../../images/default-image.jpeg";
 
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -36,7 +37,11 @@ const MovieItem = ({
               component="img"
               alt={original_title}
               height="140"
-              image={`https://themoviedb.org/t/p/${PosterWidth.mobile}${poster_path}`}
+              image={
+                poster_path
+                  ? `https://themoviedb.org/t/p/${PosterWidth.mobile}${poster_path}`
+                  : defaultImage
+              }
               title={original_title}
             />
             <CardContent>
