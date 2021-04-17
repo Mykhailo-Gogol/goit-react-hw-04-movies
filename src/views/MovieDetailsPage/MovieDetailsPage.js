@@ -1,6 +1,13 @@
 import "./MovieDetailsPage.scss";
 import { useState, useEffect } from "react";
-import { Route, NavLink } from "react-router-dom";
+import {
+  Route,
+  NavLink,
+  useParams,
+  useRouteMatch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 
 // Api
 import { MovieDetailsById } from "../../services/api.js";
@@ -14,8 +21,12 @@ import defaultImage from "../../images/default-image.jpeg";
 import CastView from "../../components/CastView/CastView";
 import ReviewsView from "../../components/ReviewsView/Review";
 
-const MovieDetailsPage = ({ match, history, location }) => {
-  const { movieId } = match.params;
+const MovieDetailsPage = () => {
+  const { movieId } = useParams();
+  const { url, path } = useRouteMatch();
+  const { push } = useHistory();
+  const { state } = useLocation();
+
   const [currentMovieDetails, setCurrentMovieDetails] = useState({});
   const [posterPath, setPosterPath] = useState("");
 
@@ -25,8 +36,6 @@ const MovieDetailsPage = ({ match, history, location }) => {
       setPosterPath(res.poster_path);
     });
   }, [movieId]);
-
-  useEffect(() => {}, [movieId]);
 
   const {
     original_title,
@@ -40,7 +49,7 @@ const MovieDetailsPage = ({ match, history, location }) => {
     original_title && release_date && vote_average && overview && genres;
 
   const handleGoBack = () => {
-    history.push(location?.state?.from || routes.home);
+    push(state?.from || routes.home);
   };
 
   return (
@@ -78,14 +87,14 @@ const MovieDetailsPage = ({ match, history, location }) => {
       <div className="additionalInfoNav">
         <h2>Additional information</h2>
         <NavLink
-          to={`${match.url}${routes.cast}`}
+          to={`${url}${routes.cast}`}
           className="additional-NavLink"
           activeClassName="additional-NavLink--active"
         >
           Cast
         </NavLink>
         <NavLink
-          to={`${match.url}${routes.reviews}`}
+          to={`${url}${routes.reviews}`}
           className="additional-NavLink"
           activeClassName="additional-NavLink--active"
         >
@@ -94,11 +103,11 @@ const MovieDetailsPage = ({ match, history, location }) => {
       </div>
       <div className="additionalInfo">
         <Route
-          path={`${match.path}${routes.cast}`}
+          path={`${path}${routes.cast}`}
           render={() => <CastView id={movieId} />}
         />
         <Route
-          path={`${match.path}${routes.reviews}`}
+          path={`${path}${routes.reviews}`}
           render={() => <ReviewsView id={movieId} />}
         />
       </div>

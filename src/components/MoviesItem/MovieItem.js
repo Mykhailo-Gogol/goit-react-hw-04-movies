@@ -1,5 +1,5 @@
 import "./MovieItem.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 // Material
 import Card from "@material-ui/core/Card";
@@ -14,15 +14,9 @@ import Typography from "@material-ui/core/Typography";
 import poster_width from "../../utils/poster_width";
 import defaultImage from "../../images/default-image.jpeg";
 
-const MovieItem = ({
-  id,
-  original_title,
-  overview,
-  url,
-  poster_path,
-  query,
-  pathname,
-}) => {
+const MovieItem = ({ original_title, overview, poster_path, query, id }) => {
+  const { pathname } = useLocation();
+
   return (
     <li className="movieItem">
       <Card className="movieRoot">
@@ -71,20 +65,9 @@ const MovieItem = ({
           </CardActionArea>
         </NavLink>
         <CardActions>
-          <NavLink
-            exact
-            to={{
-              pathname: `${url}/${id}`,
-              state: {
-                from: pathname,
-              },
-            }}
-            className="movieLink"
-          >
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
-          </NavLink>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
         </CardActions>
       </Card>
     </li>

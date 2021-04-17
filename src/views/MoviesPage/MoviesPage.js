@@ -1,5 +1,5 @@
 import "./MoviesPage.scss";
-import { useLocation, withRouter } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Api
@@ -8,7 +8,7 @@ import { MovieByQuery } from "../../services/api";
 // Comp
 import MovieItem from "../../components/MoviesItem";
 
-const MoviesPage = ({ match }) => {
+const MoviesPage = () => {
   const { pathname } = useLocation();
   const [search, setsearch] = useState("");
   const [query, setQuery] = useState("");
@@ -60,7 +60,6 @@ const MoviesPage = ({ match }) => {
                 original_title={original_title}
                 poster_path={poster_path}
                 overview={overview}
-                url={match.url}
                 pathname={pathname}
                 query={query}
               />
@@ -71,4 +70,4 @@ const MoviesPage = ({ match }) => {
   );
 };
 
-export default withRouter(MoviesPage);
+export default MoviesPage;

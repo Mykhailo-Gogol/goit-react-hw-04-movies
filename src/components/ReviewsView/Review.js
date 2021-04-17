@@ -1,14 +1,16 @@
 import "./Review.scss";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 // Api
 import { MovieReviews } from "../../services/api";
 
-const ReviewsView = ({ id }) => {
+const ReviewsView = () => {
   const [results, setResults] = useState([]);
+  const { movieId } = useParams();
 
   useEffect(() => {
-    MovieReviews(id).then((data) => {
+    MovieReviews(movieId).then((data) => {
       setResults(data.results);
     });
     // eslint-disable-next-line

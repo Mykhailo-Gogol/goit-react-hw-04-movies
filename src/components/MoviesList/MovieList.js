@@ -7,7 +7,7 @@ import MovieItem from "../MoviesItem";
 // Api
 import { Trending } from "../../services/api";
 
-const MovieList = ({ url, pathname }) => {
+const MovieList = () => {
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
@@ -27,9 +27,7 @@ const MovieList = ({ url, pathname }) => {
                   id={id}
                   original_title={original_title}
                   overview={overview}
-                  url={url}
                   poster_path={poster_path}
-                  pathname={pathname}
                 />
               )
           )}

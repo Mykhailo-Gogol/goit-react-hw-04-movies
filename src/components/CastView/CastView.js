@@ -1,6 +1,7 @@
 // Common
 import "./CastView.scss";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 // Api
 import { MovieCredits } from "../../services/api";
@@ -9,11 +10,13 @@ import { MovieCredits } from "../../services/api";
 import defaultImage from "../../images/default-image.jpeg";
 import poster_width from "../../utils/poster_width";
 
-const CastView = ({ id }) => {
+const CastView = () => {
   const [cast, setCast] = useState([]);
 
+  const { movieId } = useParams();
+
   useEffect(() => {
-    MovieCredits(id).then(({ cast }) => {
+    MovieCredits(movieId).then(({ cast }) => {
       setCast(cast);
     });
     // eslint-disable-next-line
