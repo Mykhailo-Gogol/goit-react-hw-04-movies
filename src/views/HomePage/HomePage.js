@@ -14,3 +14,4 @@ const HomePage = ({ match }) => {
 };
 
 export default withRouter(HomePage);
+// export default withRouter(HomePage);

@@ -9,9 +9,8 @@ import { MovieByQuery } from "../../services/api";
 import MovieItem from "../../components/MoviesItem";
 
 const MoviesPage = ({ match }) => {
-  const { pathname, state } = useLocation();
-  console.log(pathname, state);
-  const [search, setsearch] = useState(state || "");
+  const { pathname } = useLocation();
+  const [search, setsearch] = useState("");
   const [query, setQuery] = useState("");
   const [films, setFilms] = useState([]);
 
@@ -25,12 +24,20 @@ const MoviesPage = ({ match }) => {
   };
 
   useEffect(() => {
+    const filmsLS = JSON.parse(window.localStorage.getItem("films"));
+    setFilms(filmsLS);
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
     if (query) {
       MovieByQuery(query).then(({ results }) => {
         setFilms(results);
       });
     }
-  }, [query]);
+    window.localStorage.setItem("films", JSON.stringify(films));
+    // eslint-disable-next-line
+  }, [query, films]);
 
   return (
     <div>

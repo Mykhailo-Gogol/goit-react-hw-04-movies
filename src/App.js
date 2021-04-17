@@ -3,7 +3,7 @@ import { Suspense, lazy } from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
 
 // Utils
-import Routes from "./routes/routes";
+import routes from "./routes/routes";
 
 const HomePage = lazy(() =>
   import("./views/HomePage" /* webpackChunkName: "home-page" */)
@@ -21,21 +21,21 @@ const NotFoundPage = lazy(() =>
 const App = () => {
   return (
     <>
-      <div className="Header">
-        <nav className="Nav">
+      <div className="header">
+        <nav className="nav">
           <NavLink
             exact
-            to={Routes.home}
-            className="NavLink"
-            activeClassName="NavLink--active"
+            to={routes.home}
+            className="navLink"
+            activeClassName="navLink--active"
           >
             Home
           </NavLink>
           <NavLink
             exact
-            to={Routes.movieByQuery}
-            className="NavLink"
-            activeClassName="NavLink--active"
+            to={routes.movieByQuery}
+            className="navLink"
+            activeClassName="navLink--active"
           >
             Movies
           </NavLink>

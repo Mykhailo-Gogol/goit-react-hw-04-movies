@@ -40,7 +40,7 @@ const MovieDetailsPage = ({ match, history, location }) => {
     original_title && release_date && vote_average && overview && genres;
 
   const handleGoBack = () => {
-    history.push(location?.state?.from || routes.home, location?.state?.query);
+    history.push(location?.state?.from || routes.home);
   };
 
   return (
