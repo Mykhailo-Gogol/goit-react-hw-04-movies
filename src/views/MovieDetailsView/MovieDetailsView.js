@@ -20,9 +20,7 @@ const MovieDetailsView = ({ match, history, location }) => {
     });
   }, [movieId]);
 
-  useEffect(() => {
-    console.log(typeof movieId);
-  }, [movieId]);
+  useEffect(() => {}, [movieId]);
 
   const {
     original_title,

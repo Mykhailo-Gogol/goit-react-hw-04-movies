@@ -7,7 +7,7 @@ import { Trending } from "../../services/api";
 const HomeView = ({ match, location }) => {
   return (
     <div className="home-view">
-      <MovieList trending={Trending} url={match.url} location={location} />
+      <MovieList trending={Trending} url={match.path} location={location} />
     </div>
   );
 };

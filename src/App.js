@@ -32,9 +32,9 @@ const App = () => {
       </div>
 
       <Switch>
-        <Route exact path={Routes.home} component={HomeView} />
-        <Route path={Routes.movieDetails} component={MovieDetailsView} />
-        <Route path={Routes.movieByQuery} component={MoviesView} />
+        <Route exact path={"/"} component={HomeView} />
+        <Route path={"/movies/:movieId"} component={MovieDetailsView} />
+        <Route path={"/movies"} component={MoviesView} />
 
         <Route component={NotFoundView} />
       </Switch>

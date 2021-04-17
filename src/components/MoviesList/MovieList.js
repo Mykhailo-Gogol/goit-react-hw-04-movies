@@ -15,7 +15,7 @@ const MovieList = ({ trending, url, location }) => {
       <ul className="baseList">
         {films &&
           films.map(
-            ({ id, original_title, overview, poster_path }) =>
+            ({ id, original_title, overview, poster_path, location }) =>
               original_title && (
                 <MovieItem
                   key={id}

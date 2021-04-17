@@ -22,9 +22,8 @@ const MovieItem = ({
     <li className="baseItem">
       <Card className="root">
         <NavLink
-          exact
           to={{
-            pathname: `${url}movies/${id}`,
+            pathname: `/movies/${id}`,
             state: {
               from: location,
             },
@@ -64,7 +63,7 @@ const MovieItem = ({
           <NavLink
             exact
             to={{
-              pathname: `${url}movies/${id}`,
+              pathname: `${url}/${id}`,
               state: {
                 from: location,
               },

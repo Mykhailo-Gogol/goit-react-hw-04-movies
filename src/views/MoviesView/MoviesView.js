@@ -1,4 +1,5 @@
 import "./MoviesView.scss";
+import { withRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MovieByQuery } from "../../services/api";
 import MovieItem from "../../components/MoviesItem/";
@@ -48,6 +49,8 @@ const MoviesView = ({ match, history, location }) => {
                   original_title={original_title}
                   poster_path={poster_path}
                   overview={overview}
+                  url={match.url}
+                  location={location}
                 />
               );
             })}
@@ -57,4 +60,4 @@ const MoviesView = ({ match, history, location }) => {
   );
 };
 
-export default MoviesView;
+export default withRouter(MoviesView);

@@ -9,7 +9,6 @@ const ReviewsView = ({ id }) => {
     MovieReviews(id).then((data) => {
       setResults(data.results);
     });
-    console.log(id);
     // eslint-disable-next-line
   }, []);
   return (

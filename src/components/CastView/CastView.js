@@ -10,7 +10,6 @@ const CastView = ({ id }) => {
     MovieCredits(id).then((data) => {
       setCast(data.cast);
     });
-    console.log(id);
     // eslint-disable-next-line
   }, []);
   return (
