@@ -1,15 +1,20 @@
-import "./MovieDetailsView.scss";
-import defaultImage from "../../images/default-image.jpeg";
+import "./MovieDetailsPage.scss";
 import { useState, useEffect } from "react";
 import { Route, NavLink } from "react-router-dom";
 
-import Routes from "../../routes/routes";
-import PosterWidth from "../../utils/PosterWidth";
+// Api
 import { MovieDetailsById } from "../../services/api.js";
+
+// Utils
+import routes from "../../routes/routes";
+import poster_width from "../../utils/poster_width";
+import defaultImage from "../../images/default-image.jpeg";
+
+// Comp
 import CastView from "../../components/CastView/CastView";
 import ReviewsView from "../../components/ReviewsView/Review";
 
-const MovieDetailsView = ({ match, history, location }) => {
+const MovieDetailsPage = ({ match, history, location }) => {
   const { movieId } = match.params;
   const [currentMovieDetails, setCurrentMovieDetails] = useState({});
   const [posterPath, setPosterPath] = useState("");
@@ -35,12 +40,12 @@ const MovieDetailsView = ({ match, history, location }) => {
     original_title && release_date && vote_average && overview && genres;
 
   const handleGoBack = () => {
-    history.push(location?.state?.from || Routes.home, location?.state?.query);
+    history.push(location?.state?.from || routes.home, location?.state?.query);
   };
 
   return (
-    <div className="MovieDetailsView">
-      <button type="button" className="GoBackButton" onClick={handleGoBack}>
+    <div className="movieDetailsPage">
+      <button type="button" className="goBackButton" onClick={handleGoBack}>
         Back
       </button>
       <div style={{ display: "flex" }}>
@@ -48,7 +53,7 @@ const MovieDetailsView = ({ match, history, location }) => {
           <img
             src={
               posterPath
-                ? `https://themoviedb.org/t/p/${PosterWidth.mobile}${posterPath}`
+                ? `https://themoviedb.org/t/p/${poster_width.mobile}${posterPath}`
                 : defaultImage
             }
             alt={original_title}
@@ -70,30 +75,30 @@ const MovieDetailsView = ({ match, history, location }) => {
           </div>
         )}
       </div>
-      <div className="AdditionalInfoNav">
+      <div className="additionalInfoNav">
         <h2>Additional information</h2>
         <NavLink
-          to={`${match.url}${Routes.cast}`}
-          className="Additional-NavLink"
-          activeClassName="Additional-NavLink--active"
+          to={`${match.url}${routes.cast}`}
+          className="additional-NavLink"
+          activeClassName="additional-NavLink--active"
         >
           Cast
         </NavLink>
         <NavLink
-          to={`${match.url}${Routes.reviews}`}
-          className="Additional-NavLink"
-          activeClassName="Additional-NavLink--active"
+          to={`${match.url}${routes.reviews}`}
+          className="additional-NavLink"
+          activeClassName="additional-NavLink--active"
         >
           Reviews
         </NavLink>
       </div>
-      <div className="AdditionalInfo">
+      <div className="additionalInfo">
         <Route
-          path={`${match.path}${Routes.cast}`}
+          path={`${match.path}${routes.cast}`}
           render={() => <CastView id={movieId} />}
         />
         <Route
-          path={`${match.path}${Routes.reviews}`}
+          path={`${match.path}${routes.reviews}`}
           render={() => <ReviewsView id={movieId} />}
         />
       </div>
@@ -101,4 +106,4 @@ const MovieDetailsView = ({ match, history, location }) => {
   );
 };
 
-export default MovieDetailsView;
+export default MovieDetailsPage;

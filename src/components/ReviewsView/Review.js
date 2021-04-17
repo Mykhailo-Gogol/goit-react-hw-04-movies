@@ -1,5 +1,7 @@
 import "./Review.scss";
 import { useState, useEffect } from "react";
+
+// Api
 import { MovieReviews } from "../../services/api";
 
 const ReviewsView = ({ id }) => {

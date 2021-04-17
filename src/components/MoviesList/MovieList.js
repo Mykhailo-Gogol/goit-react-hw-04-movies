@@ -1,18 +1,23 @@
 import "./MovieList.scss";
 import { useState, useEffect } from "react";
+
+// Comp
 import MovieItem from "../MoviesItem";
 
-const MovieList = ({ trending, url, pathname }) => {
+// Api
+import { Trending } from "../../services/api";
+
+const MovieList = ({ url, pathname }) => {
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
-    trending().then(({ results }) => setFilms(results));
-  }, [trending]);
+    Trending().then(({ results }) => setFilms(results));
+  }, []);
 
   return (
     <>
-      <h1 className="baseHeading">Trending Movies</h1>
-      <ul className="baseList">
+      <h1 className="moviesListHeading">Trending Movies</h1>
+      <ul className="moviesList">
         {films &&
           films.map(
             ({ id, original_title, overview, poster_path }) =>

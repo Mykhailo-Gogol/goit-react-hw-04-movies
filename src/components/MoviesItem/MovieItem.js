@@ -1,8 +1,7 @@
 import "./MovieItem.scss";
 import { NavLink } from "react-router-dom";
-import PosterWidth from "../../utils/PosterWidth";
-import defaultImage from "../../images/default-image.jpeg";
 
+// Material
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -11,19 +10,22 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+// Utils
+import poster_width from "../../utils/poster_width";
+import defaultImage from "../../images/default-image.jpeg";
+
 const MovieItem = ({
   id,
   original_title,
   overview,
   url,
   poster_path,
-  location,
   query,
   pathname,
 }) => {
   return (
-    <li className="baseItem">
-      <Card className="root">
+    <li className="movieItem">
+      <Card className="movieRoot">
         <NavLink
           to={{
             pathname: `/movies/${id}`,
@@ -33,17 +35,17 @@ const MovieItem = ({
             },
             search: `search=${query}`,
           }}
-          className="baseLink"
+          className="movieLink"
         >
           <CardActionArea>
             <CardMedia
-              className="media"
+              className="movieMedia"
               component="img"
               alt={original_title}
               height="140"
               image={
                 poster_path
-                  ? `https://themoviedb.org/t/p/${PosterWidth.mobile}${poster_path}`
+                  ? `https://themoviedb.org/t/p/${poster_width.mobile}${poster_path}`
                   : defaultImage
               }
               title={original_title}
@@ -53,7 +55,7 @@ const MovieItem = ({
                 gutterBottom
                 variant="h5"
                 component="h2"
-                className="baseTitle"
+                className="movieTitle"
               >
                 {original_title ? original_title : "Unknow title"}
               </Typography>
@@ -61,7 +63,7 @@ const MovieItem = ({
                 variant="body2"
                 color="textSecondary"
                 component="p"
-                className="baseParagraph"
+                className="movieParagraph"
               >
                 {overview}
               </Typography>
@@ -77,7 +79,7 @@ const MovieItem = ({
                 from: pathname,
               },
             }}
-            className="baseLink"
+            className="movieLink"
           >
             <Button size="small" color="primary">
               Learn More

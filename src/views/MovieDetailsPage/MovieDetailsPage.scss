@@ -1,9 +1,9 @@
-.MovieDetailsView {
+.movieDetailsPage {
   padding: 30px 0;
   position: relative;
 }
 
-.GoBackButton {
+.goBackButton {
   position: absolute;
   right: 30px;
   display: block;
@@ -17,13 +17,13 @@
   border: 1px solid black;
 }
 
-.GoBackButton:hover {
+.goBackButton:hover {
   background-color: white;
   color: black;
   border: 1px solid black;
 }
 
-.AdditionalInfoNav {
+.additionalInfoNav {
   padding: 10px 0;
   display: flex;
   align-items: center;
@@ -31,7 +31,7 @@
   background-color: lightblue;
 }
 
-.Additional-NavLink {
+.additional-NavLink {
   display: block;
   color: black;
   padding: 10px 0;
@@ -39,7 +39,7 @@
   text-decoration: none;
 }
 
-.Additional-NavLink--active {
+.additional-NavLink--active {
   color: white;
   text-decoration: underline;
 }

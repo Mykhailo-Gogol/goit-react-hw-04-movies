@@ -1,4 +1,4 @@
-const Routes = {
+const routes = {
   home: "/",
   movieByQuery: "/movies",
   movieDetails: "/movies/:movieId",
@@ -6,4 +6,4 @@ const Routes = {
   reviews: "/reviews",
 };
 
-export default Routes;
+export default routes;
