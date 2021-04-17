@@ -11,6 +11,7 @@ const CastView = ({ id }) => {
       setCast(data.cast);
     });
     console.log(id);
+    // eslint-disable-next-line
   }, []);
   return (
     <div>

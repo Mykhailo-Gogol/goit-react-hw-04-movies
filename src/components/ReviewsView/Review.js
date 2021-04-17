@@ -10,6 +10,7 @@ const ReviewsView = ({ id }) => {
       setResults(data.results);
     });
     console.log(id);
+    // eslint-disable-next-line
   }, []);
   return (
     <div>

@@ -38,3 +38,14 @@ export const MovieReviews = (id) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const MovieByQuery = (query, page = 1) => {
+  return axios
+    .get(
+      `/search/movie?query=${query}&api_key=${ApiKey}&language=en-US&page=${page}&include_adult=false`
+    )
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
+};
