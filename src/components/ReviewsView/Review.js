@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 // Api
 import { MovieReviews } from "../../services/api";
 
+// Utils
+import getRandomColor from "../../utils/random_color";
+
 const ReviewsView = () => {
   const [results, setResults] = useState([]);
   const { movieId } = useParams();
@@ -23,15 +26,6 @@ const ReviewsView = () => {
     // eslint-disable-next-line
   }, []);
 
-  const getRandomColor = () => {
-    var letters = "0123456789ABCDEF";
-    var color = "#";
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
-
   return (
     <div>
       {results.length > 0 ? (
@@ -41,13 +35,19 @@ const ReviewsView = () => {
               <li key={author} className={review_item}>
                 <h3 style={{ color: getRandomColor() }}>{author}</h3>
                 <p>{content}</p>
-                <p>{created_at.slice(0, 10)}</p>
+                <p style={{ color: getRandomColor() }}>
+                  {created_at.slice(0, 10)}
+                </p>
               </li>
             )
           )}
         </ul>
       ) : (
-        "We don't have reviews on this film."
+        <div className="no_reviews">
+          <h2 className="no_reviews_title" style={{ color: getRandomColor() }}>
+            "We don't have reviews on this film."
+          </h2>
+        </div>
       )}
     </div>
   );

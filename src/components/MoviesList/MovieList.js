@@ -1,4 +1,4 @@
-import "./MovieList.scss";
+import { movies_list, movies_list_heading } from "./MovieList.module.scss";
 import { useState, useEffect } from "react";
 
 // Comp
@@ -16,8 +16,8 @@ const MovieList = () => {
 
   return (
     <>
-      <h1 className="movies_list_heading">Trending Movies</h1>
-      <ul className="movies_list">
+      <h1 className={movies_list_heading}>Trending Movies</h1>
+      <ul className={movies_list}>
         {films &&
           films.map(
             ({ id, original_title, overview, poster_path }) =>

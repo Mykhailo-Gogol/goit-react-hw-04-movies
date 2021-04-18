@@ -48,6 +48,13 @@
   height: 533px;
 }
 
+.movie_details_image:hover {
+  transform: scale(1.05);
+  transition: ease 250ms;
+  display: block;
+  height: 533px;
+}
+
 .genres_list {
   display: flex;
   flex-wrap: wrap;
@@ -105,6 +112,15 @@
   background-image: url("../../images/next.png");
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.video_link_image {
+  transform: scale(1);
+  transition: ease 250ms;
+}
+.video_link_image:hover {
+  transform: scale(1.05);
+  transition: ease 250ms;
 }
 
 .companies_list {

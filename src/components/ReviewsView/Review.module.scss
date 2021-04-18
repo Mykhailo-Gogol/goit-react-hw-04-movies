@@ -1,8 +1,8 @@
 .review_item {
   list-style: none;
   padding: 0px 5px;
-  border: 1px solid gray;
-  border-radius: 10px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .review_item:not(:last-child) {
@@ -11,4 +11,13 @@
 
 .review_list {
   padding: 0 300px 0 20px;
+}
+
+.no_reviews {
+  margin-top: 50px;
+}
+
+.no_reviews_title {
+  font-weight: bold;
+  padding: 0 20px;
 }

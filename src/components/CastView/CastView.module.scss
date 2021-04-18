@@ -1,0 +1,29 @@
+.cast_list {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 300px;
+  max-width: 800px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.cast_item {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cast_item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.cast_name {
+  text-align: center;
+}
+
+.cast_image {
+  display: block;
+  height: 100px;
+  width: auto;
+}

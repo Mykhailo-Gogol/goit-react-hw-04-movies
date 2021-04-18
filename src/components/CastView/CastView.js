@@ -1,5 +1,10 @@
 // Common
-import "./CastView.scss";
+import {
+  cast_image,
+  cast_item,
+  cast_list,
+  cast_name,
+} from "./CastView.module.scss";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -16,29 +21,38 @@ const CastView = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    MovieCredits(movieId).then(({ cast }) => {
-      setCast(cast);
-    });
+    MovieCredits(movieId)
+      .then(({ cast }) => {
+        setCast(cast);
+      })
+      .finally(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
+      });
     // eslint-disable-next-line
   }, []);
   return (
     <div>
       {cast && (
-        <ul>
-          {cast.map(({ name, profile_path }) => (
-            <li key={name}>
-              <img
-                src={
-                  profile_path
-                    ? `https://themoviedb.org/t/p/${poster_width.mobile}${profile_path}`
-                    : defaultImage
-                }
-                alt={name}
-                className="cast_image"
-              />
-              <p>Name: {name}</p>
-            </li>
-          ))}
+        <ul className={cast_list}>
+          {cast
+            .filter(({ profile_path }) => profile_path)
+            .map(({ name, profile_path }) => (
+              <li key={name} className={cast_item}>
+                <img
+                  src={
+                    profile_path
+                      ? `https://themoviedb.org/t/p/${poster_width.mobile}${profile_path}`
+                      : defaultImage
+                  }
+                  alt={name}
+                  className={cast_image}
+                />
+                <p className={cast_name}>{name}</p>
+              </li>
+            ))}
         </ul>
       )}
     </div>

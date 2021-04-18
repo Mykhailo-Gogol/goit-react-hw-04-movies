@@ -19,6 +19,7 @@ import { MovieDetailsById } from "../../services/api.js";
 import routes from "../../routes/routes";
 import poster_width from "../../utils/poster_width";
 import placeholder_image from "../../images/default_image.jpeg";
+import getRandomColor from "../../utils/random_color";
 
 // Comp
 import CastView from "../../components/CastView/";
@@ -72,30 +73,36 @@ const MovieDetailsPage = () => {
       </button>
       <div className="movie_details_main">
         <div className="image_container">
-          <img
-            src={
-              posterPath
-                ? `https://themoviedb.org/t/p/${poster_width.mobile}${posterPath}`
-                : placeholder_image
-            }
-            alt={original_title}
-            className={"movie_details_image"}
-          />
+          <NavLink
+            to={`${url}${routes.video}`}
+            className="video_link_image"
+            activeClassName="Video_link_image--active"
+          >
+            <img
+              src={
+                posterPath
+                  ? `https://themoviedb.org/t/p/${poster_width.mobile}${posterPath}`
+                  : placeholder_image
+              }
+              alt={original_title}
+              className={"movie_details_image"}
+            />
+          </NavLink>
         </div>
         {shouldDetailesRender && (
           <div className="details_container">
             <h1>{original_title}</h1>
             <p>Release date: {release_date.slice(0, 4)}</p>
             <p>User Score {`${vote_average * 10} %`}</p>
-            <h2>Overview</h2>
+            <h2 style={{ color: getRandomColor() }}>Overview</h2>
             <p style={{ width: "500px" }}>{overview}</p>
-            <h2>Genres</h2>
+            <h2 style={{ color: getRandomColor() }}>Genres</h2>
             <ul className="genres_list">
               {genres.map((genre) => (
                 <li key={genre.id}>{genre.name}</li>
               ))}
             </ul>
-            <h2>Production</h2>
+            <h2 style={{ color: getRandomColor() }}>Production</h2>
             <ul className="companies_list">
               {production_companies
                 .filter(({ logo_path }) => logo_path)
