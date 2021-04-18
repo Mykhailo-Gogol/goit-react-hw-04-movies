@@ -9,6 +9,9 @@ import {
   useLocation,
 } from "react-router-dom";
 
+// Material
+//
+
 // Api
 import { MovieDetailsById } from "../../services/api.js";
 
@@ -18,8 +21,9 @@ import poster_width from "../../utils/poster_width";
 import placeholder_image from "../../images/default_image.jpeg";
 
 // Comp
-import CastView from "../../components/CastView/CastView";
-import ReviewsView from "../../components/ReviewsView/Review";
+import CastView from "../../components/CastView/";
+import ReviewsView from "../../components/ReviewsView/";
+import VideoView from "../../components/VideoView/";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -60,8 +64,8 @@ const MovieDetailsPage = () => {
       <button type="button" className="go_back_button" onClick={handleGoBack}>
         Back
       </button>
-      <div style={{ display: "flex" }}>
-        <div style={{ marginRight: "30px" }}>
+      <div className="movie_details_main">
+        <div className="image_container">
           <img
             src={
               posterPath
@@ -69,6 +73,7 @@ const MovieDetailsPage = () => {
                 : placeholder_image
             }
             alt={original_title}
+            className={"movie_details_image"}
           />
         </div>
         {shouldDetailesRender && (
@@ -86,22 +91,34 @@ const MovieDetailsPage = () => {
             </ul>
           </div>
         )}
+        <Route
+          path={`${path}${routes.video}`}
+          render={() => <VideoView id={movieId} />}
+        />
       </div>
       <div className="additional_info_nav">
-        <h2>Additional information</h2>
+        {/* <h2 className="additional_info_title">Additional information</h2> */}
         <NavLink
           to={`${url}${routes.cast}`}
-          className="additional_nav_link"
+          className="additional_nav_link cast_link"
           activeClassName="additional_nav_link--active"
         >
           Cast
         </NavLink>
+
         <NavLink
           to={`${url}${routes.reviews}`}
-          className="additional_nav_link"
+          className="additional_nav_link reviews_link"
           activeClassName="additional_nav_link--active"
         >
           Reviews
+        </NavLink>
+        <NavLink
+          to={`${url}${routes.video}`}
+          className="additional_nav_link video_link"
+          activeClassName="additional_nav_link--active"
+        >
+          Watch Trailer
         </NavLink>
       </div>
       <div className="additionalInfo">

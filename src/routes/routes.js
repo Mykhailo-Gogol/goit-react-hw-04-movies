@@ -4,6 +4,7 @@ const routes = {
   movieDetails: "/movies/:movieId",
   cast: "/cast",
   reviews: "/reviews",
+  video: "/video",
 };
 
 export default routes;

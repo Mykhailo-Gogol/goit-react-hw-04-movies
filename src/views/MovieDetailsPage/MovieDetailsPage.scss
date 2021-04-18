@@ -1,11 +1,57 @@
 .movie_details_page {
-  padding: 30px 0;
+  padding: 0 0;
   position: relative;
+  height: calc(100vh - 80px);
+}
+
+.movie_details_main {
+  display: flex;
+  height: calc(100vh - 160px);
+  overflow: hidden;
+}
+
+.additional_info_nav {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: lightblue;
+}
+
+.additional_info_title {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.additional_nav_link {
+  display: block;
+  color: white;
+  padding: 10px 0;
+  margin: 0 40px;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: black;
+}
+
+.additional_nav_link--active {
+  text-decoration: underline;
+  background-color: white;
+  color: black;
+}
+
+.image_container {
+  margin-right: 30px;
+}
+
+.movie_details_image {
+  display: block;
+  height: 533px;
 }
 
 .go_back_button {
   position: absolute;
   right: 30px;
+  top: 15px;
   display: block;
   padding: 20px;
   background-color: black;
@@ -23,24 +69,29 @@
   border: 1px solid black;
 }
 
-.additional_info_nav {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-
-  background-color: lightblue;
+.cast_link::after,
+.reviews_link::after {
+  content: "";
+  display: inline-block;
+  margin-left: 10px;
+  width: 10px;
+  height: 10px;
+  padding: 2px;
+  background-color: white;
+  background-image: url("../../images/curve-down-arrow.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.additional_nav_link {
-  display: block;
-  color: black;
-  padding: 10px 0;
-  margin: 0 40px;
-  padding: 10px 20px;
-  text-decoration: none;
-}
-
-.additional_nav_link--active {
-  color: white;
-  text-decoration: underline;
+.video_link::after {
+  content: "";
+  display: inline-block;
+  margin-left: 10px;
+  width: 10px;
+  height: 10px;
+  padding: 2px;
+  background-color: white;
+  background-image: url("../../images/next.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }

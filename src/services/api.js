@@ -49,3 +49,11 @@ export const MovieByQuery = (query, page = 1) => {
     })
     .catch((err) => console.log(err));
 };
+export const VideoById = (id) => {
+  return axios
+    .get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
+};
