@@ -1,4 +1,4 @@
-import "./App.css";
+import { header, nav, nav_link, nav_link_active } from "./App.module.scss";
 import { Suspense, lazy } from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
 
@@ -21,21 +21,21 @@ const NotFoundPage = lazy(() =>
 const App = () => {
   return (
     <>
-      <div className="header">
-        <nav className="nav">
+      <div className={header}>
+        <nav className={nav}>
           <NavLink
             exact
             to={routes.home}
-            className="navLink"
-            activeClassName="navLink--active"
+            className={nav_link}
+            activeClassName={nav_link_active}
           >
             Home
           </NavLink>
           <NavLink
             exact
             to={routes.movieByQuery}
-            className="navLink"
-            activeClassName="navLink--active"
+            className={nav_link}
+            activeClassName={nav_link_active}
           >
             Movies
           </NavLink>

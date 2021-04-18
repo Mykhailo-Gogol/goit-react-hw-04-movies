@@ -25,9 +25,9 @@ const MovieItem = ({ original_title, overview, poster_path, query, id }) => {
             pathname: `/movies/${id}`,
             state: {
               from: pathname,
-              query,
+              query: query,
             },
-            search: `search=${query}`,
+            search: `search=${original_title.toLowerCase().replace(" ", "_")}`,
           }}
           className="movie_link"
         >

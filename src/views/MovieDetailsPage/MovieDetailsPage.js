@@ -47,10 +47,16 @@ const MovieDetailsPage = () => {
     vote_average,
     overview,
     genres,
+    production_companies,
   } = currentMovieDetails;
 
   const shouldDetailesRender =
-    original_title && release_date && vote_average && overview && genres;
+    original_title &&
+    release_date &&
+    vote_average &&
+    overview &&
+    genres &&
+    production_companies;
 
   const handleGoBack = () => {
     push({
@@ -84,10 +90,24 @@ const MovieDetailsPage = () => {
             <h2>Overview</h2>
             <p style={{ width: "500px" }}>{overview}</p>
             <h2>Genres</h2>
-            <ul>
+            <ul className="genres_list">
               {genres.map((genre) => (
                 <li key={genre.id}>{genre.name}</li>
               ))}
+            </ul>
+            <h2>Production</h2>
+            <ul className="companies_list">
+              {production_companies
+                .filter(({ logo_path }) => logo_path)
+                .map(({ id, logo_path, name }) => (
+                  <li key={id} className="company_item">
+                    <img
+                      src={`https://themoviedb.org/t/p/${poster_width.mobile}${logo_path}`}
+                      alt={name}
+                      className="company_logo"
+                    />
+                  </li>
+                ))}
             </ul>
           </div>
         )}
