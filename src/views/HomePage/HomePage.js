@@ -1,8 +1,7 @@
-import "./HomePage.scss";
+import { home_page_heading } from "./HomePage.module.scss";
 import React, { useState, useEffect } from "react";
 
 // Material
-import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -13,15 +12,7 @@ import { Trending } from "../../services/api";
 // Comp
 import MovieItem from "../../components/MovieItem";
 
-// Styles
-const useStyles = makeStyles({
-  home_page_heading: {
-    textAlign: "center",
-  },
-});
-
 const HomePage = () => {
-  const classes = useStyles();
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
@@ -30,7 +21,7 @@ const HomePage = () => {
 
   return (
     <React.Fragment>
-      <h1 className={classes.home_page_heading}>Trending Movies</h1>
+      <h1 className={home_page_heading}>Trending Movies</h1>
       <CssBaseline />
       <Container maxWidth="xl">
         <Grid container spacing={5}>
