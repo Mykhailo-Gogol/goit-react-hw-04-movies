@@ -19,7 +19,6 @@ import { MovieDetailsById } from "../../services/api.js";
 import routes from "../../routes/routes";
 import poster_width from "../../utils/poster_width";
 import placeholder_image from "../../images/default_image.jpeg";
-import getRandomColor from "../../utils/random_color";
 
 // Comp
 import CastView from "../../components/CastView/";
@@ -56,8 +55,8 @@ const MovieDetailsPage = () => {
     release_date &&
     vote_average &&
     overview &&
-    genres &&
-    production_companies;
+    genres.length > 0 &&
+    production_companies.length > 0;
 
   const handleGoBack = () => {
     push({
@@ -94,15 +93,15 @@ const MovieDetailsPage = () => {
             <h1>{original_title}</h1>
             <p>Release date: {release_date.slice(0, 4)}</p>
             <p>User Score {`${vote_average * 10} %`}</p>
-            <h2 style={{ color: getRandomColor() }}>Overview</h2>
+            <h2>Overview</h2>
             <p style={{ width: "500px" }}>{overview}</p>
-            <h2 style={{ color: getRandomColor() }}>Genres</h2>
+            <h2>Genres</h2>
             <ul className="genres_list">
               {genres.map((genre) => (
                 <li key={genre.id}>{genre.name}</li>
               ))}
             </ul>
-            <h2 style={{ color: getRandomColor() }}>Production</h2>
+            <h2>Production</h2>
             <ul className="companies_list">
               {production_companies
                 .filter(({ logo_path }) => logo_path)

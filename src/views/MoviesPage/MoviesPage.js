@@ -1,15 +1,20 @@
 import "./MoviesPage.scss";
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 
 // Api
 import { MovieByQuery } from "../../services/api";
 
+// Material
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+
 // Comp
-import MovieItem from "../../components/MoviesItem";
+import MovieItem from "../../components/MovieItem";
 
 const MoviesPage = () => {
-  const { pathname, state } = useLocation();
+  const { state } = useLocation();
   const [search, setsearch] = useState(state?.query || "");
   const [query, setQuery] = useState("");
   const [films, setFilms] = useState([]);
@@ -50,22 +55,31 @@ const MoviesPage = () => {
           onChange={handleQueryChange}
         />
       </form>
-      <ul className="movies_list">
-        {films &&
-          films.map(({ id, original_title, poster_path, overview }) => {
-            return (
-              <MovieItem
-                key={id}
-                id={id}
-                original_title={original_title}
-                poster_path={poster_path}
-                overview={overview}
-                pathname={pathname}
-                query={query}
-              />
-            );
-          })}
-      </ul>
+      <Fragment>
+        <CssBaseline />
+        <Container maxWidth="xl">
+          <Grid container spacing={5}>
+            {films.map(
+              ({ id, original_title, overview, poster_path }) =>
+                id &&
+                original_title &&
+                overview &&
+                poster_path && (
+                  <Grid key={id} item xs={12} sm={6} md={3} ld={3} xl={3}>
+                    <Container maxWidth="xs">
+                      <MovieItem
+                        id={id}
+                        original_title={original_title}
+                        overview={overview}
+                        poster_path={poster_path}
+                      />
+                    </Container>
+                  </Grid>
+                )
+            )}
+          </Grid>
+        </Container>
+      </Fragment>
     </div>
   );
 };
