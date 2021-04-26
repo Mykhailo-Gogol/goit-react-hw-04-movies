@@ -27,3 +27,9 @@
   height: 100px;
   width: auto;
 }
+
+@media (max-width: 800px) {
+  .cast_list {
+    justify-content: center;
+  }
+}

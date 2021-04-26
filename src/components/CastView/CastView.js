@@ -38,6 +38,7 @@ const CastView = () => {
       {cast && (
         <ul className={cast_list}>
           {cast
+            .slice(0, 10)
             .filter(({ profile_path }) => profile_path)
             .map(({ name, profile_path }) => (
               <li key={name} className={cast_item}>

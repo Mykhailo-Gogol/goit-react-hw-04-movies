@@ -72,21 +72,15 @@ const MovieDetailsPage = () => {
       </button>
       <div className="movie_details_main">
         <div className="image_container">
-          <NavLink
-            to={`${url}${routes.video}`}
-            className="video_link_image"
-            activeClassName="Video_link_image--active"
-          >
-            <img
-              src={
-                posterPath
-                  ? `https://themoviedb.org/t/p/${poster_width.mobile}${posterPath}`
-                  : placeholder_image
-              }
-              alt={original_title}
-              className={"movie_details_image"}
-            />
-          </NavLink>
+          <img
+            src={
+              posterPath
+                ? `https://themoviedb.org/t/p/${poster_width.mobile}${posterPath}`
+                : placeholder_image
+            }
+            alt={original_title}
+            className="movie_details_image"
+          />
         </div>
         {shouldDetailesRender && (
           <div className="details_container">
@@ -94,7 +88,7 @@ const MovieDetailsPage = () => {
             <p>Release date: {release_date.slice(0, 4)}</p>
             <p>User Score {`${vote_average * 10} %`}</p>
             <h2>Overview</h2>
-            <p style={{ width: "500px" }}>{overview}</p>
+            <p>{overview}</p>
             <h2>Genres</h2>
             <ul className="genres_list">
               {genres.map((genre) => (
@@ -117,10 +111,6 @@ const MovieDetailsPage = () => {
             </ul>
           </div>
         )}
-        <Route
-          path={`${path}${routes.video}`}
-          render={() => <VideoView id={movieId} />}
-        />
       </div>
       <div className="additional_info_nav">
         {/* <h2 className="additional_info_title">Additional information</h2> */}
@@ -144,7 +134,7 @@ const MovieDetailsPage = () => {
           className="additional_nav_link video_link"
           activeClassName="additional_nav_link--active"
         >
-          Watch Trailer
+          Trailer
         </NavLink>
       </div>
       <div className="additionalInfo">
@@ -157,6 +147,10 @@ const MovieDetailsPage = () => {
           render={() => <ReviewsView id={movieId} />}
         />
       </div>
+      <Route
+        path={`${path}${routes.video}`}
+        render={() => <VideoView id={movieId} />}
+      />
     </div>
   );
 };

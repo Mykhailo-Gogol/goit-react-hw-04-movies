@@ -27,7 +27,7 @@ const ReviewsView = () => {
     <div>
       {results.length > 0 ? (
         <ul className={review_list}>
-          {results.map(({ author, content, created_at }) => (
+          {results.slice(0, 2).map(({ author, content, created_at }) => (
             <li key={author} className={review_item}>
               <h3>{author}</h3>
               <p>{content}</p>

@@ -1,6 +1,5 @@
 .video_view {
-  display: block;
-  position: absolute;
-  right: 0px;
-  bottom: 80px;
+  display: flex;
+  margin: 20px 0;
+  justify-content: center;
 }
