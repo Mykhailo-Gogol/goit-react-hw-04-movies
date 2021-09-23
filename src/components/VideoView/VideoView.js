@@ -8,10 +8,17 @@ const VideoView = ({ id }) => {
   const [videoKey, setVideoKey] = useState([]);
 
   useEffect(() => {
-    VideoById(id).then(({ results }) => {
-      const key = results[0].key;
-      setVideoKey(key);
-    });
+    VideoById(id)
+      .then(({ results }) => {
+        const key = results[0].key;
+        setVideoKey(key);
+      })
+      .finally(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
+      });
     // eslint-disable-next-line
   }, []);
 
@@ -21,8 +28,8 @@ const VideoView = ({ id }) => {
     <div className={video_view}>
       {videoKey && (
         <iframe
-          width="400"
-          height="auto"
+          width="600"
+          height="400"
           src={videoSrc}
           title="YouTube video player"
           frameBorder="0"

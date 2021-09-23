@@ -41,7 +41,9 @@ const App = () => {
           </NavLink>
         </nav>
       </div>
-      <Suspense fallback={<h1>Loading....</h1>}>
+      <Suspense
+        fallback={<p style={{ textAlign: "center", color: "darkgray" }}></p>}
+      >
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/movies/:movieId" component={MovieDetailsPage} />

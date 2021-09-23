@@ -10,3 +10,34 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.search_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  padding: 10px 0px;
+  color: white;
+  text-decoration: none;
+  background-color: black;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.search_button:hover,
+.search_button:active {
+  background-color: white;
+  color: black;
+  outline: none;
+  border: 1px solid black;
+}
+
+.search_input {
+  outline: none;
+  border: 1px solid black;
+}
+
+.search_input:focus {
+  outline: none;
+  border: 1px solid green;
+}

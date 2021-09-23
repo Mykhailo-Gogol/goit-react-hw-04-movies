@@ -1,4 +1,9 @@
-import { review_item, review_list } from "./Review.module.scss";
+import {
+  review_item,
+  review_list,
+  no_reviews,
+  no_reviews_title,
+} from "./Review.module.scss";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -36,8 +41,8 @@ const ReviewsView = () => {
           ))}
         </ul>
       ) : (
-        <div className="no_reviews">
-          <h2 className="no_reviews_title">
+        <div className={no_reviews}>
+          <h2 className={no_reviews_title}>
             "We don't have reviews on this film."
           </h2>
         </div>

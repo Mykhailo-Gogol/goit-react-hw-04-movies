@@ -47,12 +47,15 @@ const MoviesPage = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="movies_form">
-        <button type="submit">Search</button>
+        <button type="submit" className="search_button">
+          Search
+        </button>
         <input
           value={search}
           type="text"
           name="query"
           onChange={handleQueryChange}
+          className="search_input"
         />
       </form>
       <Fragment>
